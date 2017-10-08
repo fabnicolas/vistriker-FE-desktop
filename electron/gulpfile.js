@@ -62,16 +62,52 @@ gulp.task('clean_package_json', function(){
     return del('./src/package*.json').then(gutil.log("Ok!"));
 });
 
-/*  Task 'smart_build' is an advanced version of 'electron-packager' build task.
+/*  #4 subtask of 'smart_build'.
+    This task works, but it might be removed in future.
+    This task produces inside /installers Windows releases of Electron application into
+    three files for each architecture.
+
+    It works, but there is a loader at beginning that restarts the app, so it's needed to find an alternative.
+    */
+gulp.task('build_windows', function(callback){
+    var installer = require('electron-winstaller');
+    var path      = require('path');
+    
+    console.log("Packaging Windows application into a single .exe with a .nopkg...");
+    
+    return installer.createWindowsInstaller({
+        appDirectory:    './ViStriker-Electron-win32-ia32',
+        outputDirectory: './installers/win32-ia32',
+        exe:             'ViStriker-Electron.exe',
+        setupExe:        'ViStriker.exe',
+        noMsi:           true,
+    }).then(function(){
+        gutil.log("Win32-ia32 successful! Waiting for win32-x64...");
+        return resultPromise = installer.createWindowsInstaller({
+            appDirectory:    './ViStriker-Electron-win32-x64',
+            outputDirectory: './installers/win32-x64',
+            exe:             'ViStriker-Electron.exe',
+            setupExe:        'ViStriker.exe',
+            noMsi:           true,
+        }).then(function(){return gutil.log("Win32-x64 successful!")})
+          .catch(rejection => console.log("Could not build win32-x64..."));
+    }).catch(rejection => console.log("Could not build win32-ia32..."));
+});
+
+/*  Task 'smart_build' is an advanced version of 'electron-packager' build task plus it makes
+    installers for Windows through NPM module 'electron-winstaller' (At the moment).
     It runs in order the following build tasks:
     - copy_package_json
     - actual_build
     - clean_package_json
+    - build_windows
     You can read the description of the single tasks in their respective sections.
 
-    To execute those 3 tasks sequentially we use NPM module 'run-sequence'.
+    To execute those 4 tasks sequentially we use NPM module 'run-sequence'.
     Tasks are all logged using NPM module 'gulp-util'.
 */
 gulp.task('smart_build', function(callback){
-    runSeq('copy_package_json', 'actual_build', 'clean_package_json', callback);
+    runSeq('copy_package_json', 'actual_build', 'clean_package_json',
+        'build_windows',
+        callback);
 })

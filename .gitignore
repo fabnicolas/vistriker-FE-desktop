@@ -1,4 +1,4 @@
-# Electron .gitignore (Also removed build with /electron/*Electron-*/ rule)
+# Electron .gitignore
 
 /electron/**/.DS_Store
 /electron/**/.env
@@ -17,7 +17,6 @@
 /electron/**/*.vcxproj.filters
 /electron/**/*.vcxproj.user
 /electron/**/*.xcodeproj
-/electron/*Electron-*/
 /electron/**/.idea/
 /electron/brightray/brightray.opensdf
 /electron/brightray/brightray.sdf
@@ -46,3 +45,9 @@
 /electron/vendor/python_26/
 /electron/node_modules/
 /electron/SHASUMS256.txt
+
+# Removed architectures build files
+/electron/*Electron-*/
+
+# Removed installers
+/electron/installers/
