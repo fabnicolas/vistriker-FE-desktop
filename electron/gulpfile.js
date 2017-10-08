@@ -5,7 +5,7 @@
     A problem arised during the development process (Suppose /electron as root folder):
     - If you run 'electron-packager-build' on root folder as src, with source files directly inside root,
         'node_modules' folder with other build files gets bundled inside Electron releases.
-        Those files are UNNECESSARY and causes extra MB disk space.
+        Those files are UNNECESSARY and causes extra MB disk space, due to the fact they bundle gulp and other modules.
     SOLUTION: separate source files from root in a subdirectory, /src, and specify /src as source folder
         for electron-packager.
     - Due to the new change, Electron application wasn't running because it was missing 'package.json' and
