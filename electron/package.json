@@ -1,0 +1,33 @@
+{
+  "name": "vistriker-fe-desktop-electron",
+  "version": "1.0.0",
+  "description": "Desktop client for ViStriker made in Electron.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "gulp smart_build",
+    "start": "electron ./src/index.js",
+    "electron-packager-build": "electron-packager ./src ViStriker-Electron --all --overwrite --ignore=\"\\node_modules|.git(ignore|modules)\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Finalgalaxy/vistriker-FE-desktop.git"
+  },
+  "author": "Finalgalaxy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Finalgalaxy/vistriker-FE-desktop/issues"
+  },
+  "homepage": "https://github.com/Finalgalaxy/vistriker-FE-desktop#readme",
+  "devDependencies": {
+    "electron": "1.7.8",
+    "electron-packager": "^9.1.0",
+    "gulp": "^3.9.1",
+    "gulp-exec": "^2.1.3",
+    "gulp-util": "^3.0.8",
+    "run-sequence": "^2.2.0"
+  },
+  "dependencies": {
+    "del": "^3.0.0"
+  }
+}
