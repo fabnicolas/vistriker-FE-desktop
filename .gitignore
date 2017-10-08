@@ -1,3 +1,5 @@
+# Electron .gitignore (Also removed build with /electron/*Electron-*/ rule)
+
 /electron/**/.DS_Store
 /electron/**/.env
 /electron/**/.gclient_done

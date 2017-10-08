@@ -4,7 +4,6 @@
   "description": "Desktop client for ViStriker made in Electron.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "gulp smart_build",
     "start": "electron ./src/index.js",
     "electron-packager-build": "electron-packager ./src ViStriker-Electron --all --overwrite --ignore=\"\\node_modules|.git(ignore|modules)\""
