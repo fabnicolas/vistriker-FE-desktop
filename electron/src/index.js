@@ -14,5 +14,5 @@ app.on('ready', () => {
     mainWindow.loadURL('http://finalgalaxy.github.io/vistriker-FE/');
 
     // Clear window when "closed" event is fired on mainWindow object.
-    mainWindow.on('closed', () => mainWindow = null);
+    mainWindow.on('closed', () => app.quit());
 });
