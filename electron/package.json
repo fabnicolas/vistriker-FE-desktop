@@ -21,7 +21,7 @@
   "homepage": "https://github.com/Finalgalaxy/vistriker-FE-desktop#readme",
   "devDependencies": {
     "del": "^3.0.0",
-    "electron": "1.7.8",
+    "electron": "^1.8.6",
     "electron-packager": "^9.1.0",
     "electron-winstaller": "^2.6.4",
     "gulp": "^3.9.1",
