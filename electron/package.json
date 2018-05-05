@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "gulp smart_build",
+    "build-windows-installers": "gulp build_windows",
     "start": "electron ./src/index.js",
     "electron-packager-build": "electron-packager ./src ViStriker-Electron --all --overwrite --ignore=\"\\node_modules|.git(ignore|modules)\""
   },
